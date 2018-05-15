@@ -1,0 +1,7 @@
+name: DeluxeColors
+version: 1.2
+main: me.therealdan.dc.DeluxeColors
+author: TheRealDan
+commands:
+  Color:
+  Colors:

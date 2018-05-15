@@ -1,0 +1,75 @@
+# Permissions
+# deluxecolors.colors.*: Access to the all chat colors
+# deluxecolors.colors.<color>: Access to the specificed chat color
+#
+Color:
+  1: '&6'
+  2: '&7'
+Use_Unlocked_Codes_In_Chat: true
+Default_Color: "Gray"
+Locked_Message: "&7You don't have permission to use %code%%color%&7!"
+Select_Message: "&7You have selected %code%%color%&7!"
+Color_UI:
+  Title: "Pick a Color"
+  Size: 9
+  Locked_Name: "%code%%color%"
+  Locked_Lore:
+  - "&7You have not unlocked the %code%%color% &7chat color"
+  Select_Name: "%code%%color%"
+  Select_Lore:
+  - "&7Click to select the %code%%color% &7chat color"
+Colors:
+  Gray:
+    Enabled: true
+    Permission_Required: false
+    Slot: 1
+    Code: '&7'
+    Durability: 7
+  Red:
+    Enabled: true
+    Permission_Required: true
+    Slot: 2
+    Code: '&c'
+    Durability: 14
+  Orange:
+    Enabled: true
+    Permission_Required: true
+    Slot: 3
+    Code: '&6'
+    Durability: 1
+  Yellow:
+    Enabled: true
+    Permission_Required: true
+    Slot: 4
+    Code: '&e'
+    Durability: 4
+  Green:
+    Enabled: true
+    Permission_Required: true
+    Slot: 5
+    Code: '&a'
+    Durability: 5
+  Aqua:
+    Enabled: true
+    Permission_Required: true
+    Slot: 6
+    Code: '&b'
+    Durability: 3
+  Blue:
+    Enabled: true
+    Permission_Required: true
+    Slot: 7
+    Code: '&9'
+    Durability: 11
+  Purple:
+    Enabled: true
+    Permission_Required: true
+    Slot: 8
+    Code: '&5'
+    Durability: 10
+  Pink:
+    Enabled: true
+    Permission_Required: true
+    Slot: 9
+    Code: '&d'
+    Durability: 6
