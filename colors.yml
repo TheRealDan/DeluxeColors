@@ -1,0 +1,46 @@
+Colors:
+  Gray:
+    Permission_Required: false
+    Slot: 1
+    ColorCode: '&7'
+    Durability: 7
+  Red:
+    Permission_Required: true
+    Slot: 2
+    ColorCode: '&c'
+    Durability: 14
+  Orange:
+    Permission_Required: true
+    Slot: 3
+    ColorCode: '&6'
+    Durability: 1
+  Yellow:
+    Permission_Required: true
+    Slot: 4
+    ColorCode: '&e'
+    Durability: 4
+  Green:
+    Permission_Required: true
+    Slot: 5
+    ColorCode: '&a'
+    Durability: 5
+  Aqua:
+    Permission_Required: true
+    Slot: 6
+    ColorCode: '&b'
+    Durability: 3
+  Blue:
+    Permission_Required: true
+    Slot: 7
+    ColorCode: '&9'
+    Durability: 11
+  Purple:
+    Permission_Required: true
+    Slot: 8
+    ColorCode: '&5'
+    Durability: 10
+  Pink:
+    Permission_Required: true
+    Slot: 9
+    ColorCode: '&d'
+    Durability: 6
