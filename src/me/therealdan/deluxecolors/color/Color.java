@@ -87,6 +87,7 @@ public class Color {
         }
 
         ItemMeta itemMeta = icon.getItemMeta();
+        itemMeta.setDisplayName(lore.remove(0));
         itemMeta.setLore(lore);
         icon.setItemMeta(itemMeta);
 
@@ -117,7 +118,7 @@ public class Color {
                 lastSlot = color.getSlot();
 
         int size = 9;
-        while (size < lastSlot + 1) size += 9;
+        while (size < lastSlot) size += 9;
         if (size > 54) size = 54;
         return size;
     }
@@ -158,7 +159,10 @@ public class Color {
     }
 
     private static File getFile() {
-        if (file == null) file = new File(DeluxeColors.getInstance().getDataFolder(), path);
+        if (file == null) {
+            DeluxeColors.getInstance().saveResource(path, false);
+            file = new File(DeluxeColors.getInstance().getDataFolder(), path);
+        }
         return file;
     }
 }
