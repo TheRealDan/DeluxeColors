@@ -5,7 +5,7 @@
 # Color used in commands and feedback
 Color:
   Main: '&6'
-  Secondary: '&7'
+  Secondary: '&f'
 #
 # Settings
 Default_Color: "Gray"
@@ -31,3 +31,6 @@ ColorPicker_UI:
   Unlocked:
   - "%colorcode%%colorname%"
   - "&7Click to select the %colorcode%%colorname% &7chat color"
+  On_Click:
+    Always_Close: true
+    Close_On_Change: true
