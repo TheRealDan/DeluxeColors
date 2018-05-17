@@ -28,18 +28,22 @@ public class ColorPicker implements Listener {
 
     private String title;
     private String noPermission, selected;
+    private boolean alwaysClose, closeOnChange;
 
     public ColorPicker() {
         if (getData().contains("Players"))
             for (String uuid : getData().getConfigurationSection("Players").getKeys(false))
                 this.playerColors.put(UUID.fromString(uuid), Color.byID(getData().getString("Players." + uuid)));
 
-        this.title = ChatColor.translateAlternateColorCodes('&', getData().getString("ColorPicked_UI.Title"));
-        this.noPermission = ChatColor.translateAlternateColorCodes('&', getData().getString("Messages.No_Permission"));
-        this.selected = ChatColor.translateAlternateColorCodes('&', getData().getString("Messages.Selected"));
+        this.title = ChatColor.translateAlternateColorCodes('&', DeluxeColors.getInstance().getConfig().getString("ColorPicker_UI.Title"));
+        this.noPermission = ChatColor.translateAlternateColorCodes('&', DeluxeColors.getInstance().getConfig().getString("Messages.No_Permission"));
+        this.selected = ChatColor.translateAlternateColorCodes('&', DeluxeColors.getInstance().getConfig().getString("Messages.Selected"));
 
-        Color.locked = getData().getStringList("ColorPicker_UI.Locked");
-        Color.unlocked = getData().getStringList("ColorPicker_UI.Unlocked");
+        this.alwaysClose = DeluxeColors.getInstance().getConfig().getBoolean("ColorPicker_UI.On_Click.Always_Close");
+        this.closeOnChange = DeluxeColors.getInstance().getConfig().getBoolean("ColorPicker_UI.On_Click.Close_On_Change");
+
+        Color.locked = DeluxeColors.getInstance().getConfig().getStringList("ColorPicker_UI.Locked");
+        Color.unlocked = DeluxeColors.getInstance().getConfig().getStringList("ColorPicker_UI.Unlocked");
     }
 
     @EventHandler
@@ -48,13 +52,19 @@ public class ColorPicker implements Listener {
         if (!hasUIOpen(player)) return;
         event.setCancelled(true);
 
-        Color color = Color.bySlot(event.getSlot());
+        Color color = Color.bySlot(event.getSlot() + 1);
         if (color == null) return;
 
         boolean change = color.hasPermission(player);
 
         if (change) setColor(player, color);
-        player.sendMessage(change ? selected : noPermission);
+        player.sendMessage((change ? selected : noPermission)
+                .replace("%player%", player.getName())
+                .replace("%colorcode%", color.getColorCode())
+                .replace("%colorname%", color.getID())
+        );
+
+        if (alwaysClose || (change && closeOnChange)) player.closeInventory();
     }
 
     @EventHandler
@@ -66,7 +76,7 @@ public class ColorPicker implements Listener {
         Inventory inventory = Bukkit.createInventory(null, Color.getInventorySize(), title);
 
         for (Color color : Color.values())
-            inventory.setItem(color.getSlot(), color.getIcon(player));
+            inventory.setItem(color.getSlot() - 1, color.getIcon(player));
 
         player.openInventory(inventory);
         uiOpen.add(player.getUniqueId());
