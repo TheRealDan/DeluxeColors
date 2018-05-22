@@ -13,7 +13,7 @@ public class ColorCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String command, String[] args) {
         Player target = sender instanceof Player ? (Player) sender : null;
 
-        if (args.length > 0) {
+        if (args.length > 0 && sender.hasPermission("deluxecolors.commands.color.other")) {
             try {
                 target = Bukkit.getPlayer(args[0]);
             } catch (Exception e) {
